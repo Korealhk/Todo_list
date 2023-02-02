@@ -1,25 +1,25 @@
 import React, { useCallback, useRef, useState } from "react";
-import TodoAdd from './Component/TodoAdd';
-import TodoListTemplate from './Component/TodoListTemplate';
+import TodoAdd from "./Component/TodoAdd";
+import TodoListTemplate from "./Component/TodoListTemplate";
 import TodoList from "./Component/TodoList";
 
 const App = () => {
   const [todos, setTodos] = useState([
     {
       id: 1,
-      text: '리액트 공부하기',
+      text: "리액트 공부하기",
       checked: true,
       star: false,
     },
     {
       id: 2,
-      text: '도서관가서 책 빌리기',
+      text: "도서관가서 책 빌리기",
       checked: true,
       star: false,
     },
     {
       id: 3,
-      text: '방 청소하기',
+      text: "방 청소하기",
       checked: false,
       star: true,
     },
@@ -27,27 +27,50 @@ const App = () => {
 
   const nextID = useRef(4);
 
-  const onAdd = useCallback( text => {
-    const todo ={
-      id : nextID.current,
-      text,
-      checked : false,
-    };
-    setTodos(todos.concat(todo));
-  },
-  [todos]
+  const onAdd = useCallback(
+    (text) => {
+      const todo = {
+        id: nextID.current++,
+        text,
+        checked: false,
+      };
+      setTodos(todos.concat(todo));
+    },
+    [todos]
   );
-  
-  const onRemove = useCallback();
-  const onCheck = useCallback();
-  const onImportent = useCallback();
 
-  console.log("App");
-  console.log(todos);
+  const onRemove = useCallback(
+    (id) => {
+      setTodos(todos.filter((todo) => todo.id !== id));
+    },
+    [todos]
+  );
+  const onCheck = useCallback(
+    (id) => {
+      setTodos(
+        todos.map((todo) =>
+          todo.id === id ? { ...todo, checked: !todo.checked } : todo
+        )
+      );
+    },
+    [todos]
+  );
+
+  const onImportent = useCallback(
+    (id) => {
+      setTodos(
+        todos.map((todo) =>
+          todo.id === id ? { ...todo, star: !todo.star } : todo
+        )
+      );
+    },
+    [todos]
+  );
+
   return (
     <TodoListTemplate>
-      <TodoAdd onAdd={onAdd}/>
-      <TodoList 
+      <TodoAdd onAdd={onAdd} />
+      <TodoList
         todos={todos}
         onRemove={onRemove}
         onCheck={onCheck}

@@ -2,14 +2,26 @@ import React from "react";
 import "./TodoListTemplate.scss";
 
 const TodoListTemplate = ({ children }) => {
+  const date = new Date();
+  const year = date.getFullYear();
+  const monthNames = [
+    "JAN",
+    "FAB",
+    "MAR",
+    "APR",
+    "MAY",
+    "JUN",
+    "JUL",
+    "AUG",
+    "SEP",
+    "OCT",
+    "NOV",
+    "DEC",
+  ];
+  const month = monthNames[date.getMonth()];
+  const day = date.getDate();
 
-    const date = new Date();
-    const year = date.getFullYear();
-    const monthNames = ["JAN", "FAB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
-    const month = monthNames[date.getMonth()];
-    const day = date.getDate();
-
-    console.log("TodoListTemplate");
+  console.log("TodoListTemplate");
 
   return (
     <div className="TodoListTemplate">
@@ -29,6 +41,5 @@ const TodoListTemplate = ({ children }) => {
     </div>
   );
 };
-
 
 export default TodoListTemplate;
