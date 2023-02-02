@@ -1,0 +1,67 @@
+.TodoObject{
+    display: flex;
+    align-items: center;
+    padding: 13px 0;
+    border-bottom:  1px solid #eee;
+    color: black;
+
+    &.star{
+        order: -1;
+    }
+
+    .checkbox{
+        display: flex;
+        flex: 1;
+        align-items: center;
+        cursor: pointer;
+
+        svg {
+            font-size : 18px;
+        }
+
+        .text {
+            flex: 1;
+            margin-left : 3px;
+        }
+
+
+        &.checked {
+            svg {
+                color : #50e3a4;
+            }
+
+            .text {
+                color : #888;
+                text-decoration: line-through;
+            }
+        }
+    }
+
+    .importent {
+        display: flex;
+        color: #ccc;
+        font-size: 21px;
+        cursor: pointer;
+        
+        &:hover {
+            color: #f0f351;
+          }
+
+        &.star { 
+            color:#f0f351;
+        }
+    }
+
+    .remove {
+            display: flex;
+            margin-left: 5px;
+            color: #ff6b6bc9;
+            font-size: 21px;
+            cursor: pointer;
+            
+            &:hover{
+                color: #ff6b6b;
+            }
+    }
+    
+}

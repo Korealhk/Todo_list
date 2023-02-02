@@ -9,6 +9,7 @@ const TodoListTemplate = ({ children }) => {
     const month = monthNames[date.getMonth()];
     const day = date.getDate();
 
+    console.log("TodoListTemplate");
 
   return (
     <div className="TodoListTemplate">
@@ -24,7 +25,7 @@ const TodoListTemplate = ({ children }) => {
         </div>
         <div className="title">Todo List</div>
       </div>
-      <div className="">어쩌구 저쩌구...</div>
+      <div className="">{children}</div>
     </div>
   );
 };
