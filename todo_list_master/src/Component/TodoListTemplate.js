@@ -1,18 +1,25 @@
-import React, { Component } from "react";
+import React from "react";
 import "./TodoListTemplate.scss";
 
-class TodoListTemplate extends Component {
-  render() {
-    return (
-      <div className="TodoListTemplate">
-        1
-        <div className="app_header">
-         2   
-            <div className="data_area">3</div>
+const TodoListTemplate = ({ children }) => {
+  return (
+    <div className="TodoListTemplate">
+      <div className="app_header">
+        <div className="data_area">
+          <div className="left_col">
+            <div className="day_area">25</div>
+          </div>
+          <div className="right_col">
+            <div className="month_area">7</div>
+            <div className="year_area">2023</div>
+          </div>
         </div>
+        <div className="title">Todo List</div>
       </div>
-    );
-  }
-}
+      <div className="">어쩌구 저쩌구...</div>
+    </div>
+  );
+};
+
 
 export default TodoListTemplate;
