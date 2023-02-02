@@ -1,0 +1,26 @@
+
+
+.TodoListTemplate{
+
+    width: 350px;
+    padding: 50px 50px;             
+    margin: 100px auto 0;                  /* https://comizle.tistory.com/28 설명 */
+    background-color: white;    
+    box-shadow: 8px 5px 10px #c1c0b9;   /* box-shadow 본래 크기 뒤에 생기는 그림자 */
+
+    .app_header {
+        margin-top: 5px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 4rem; 
+        background: yellow;
+
+
+        .data_area{
+            display: flex;
+            color: #333;
+            font-family: "Bellota";
+        }
+    }
+}
