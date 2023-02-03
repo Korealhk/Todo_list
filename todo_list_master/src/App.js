@@ -1,7 +1,8 @@
-import React, { useCallback, useRef, useState } from "react";
+import React, { Fragment, useCallback, useRef, useState } from "react";
 import TodoAdd from "./Component/TodoAdd";
 import TodoListTemplate from "./Component/TodoListTemplate";
 import TodoList from "./Component/TodoList";
+import Modal from "./Component/Modal";
 
 const App = () => {
   const [todos, setTodos] = useState([
@@ -25,16 +26,30 @@ const App = () => {
     },
   ]);
 
+  const [modalOpen, setModalOpen] = useState(false);
+
+  function openModal() {
+    setModalOpen(true);
+  }
+
+  const closeModal = () => {
+    setModalOpen(false);
+  };
+
   const nextID = useRef(4);
 
   const onAdd = useCallback(
     (text) => {
-      const todo = {
-        id: nextID.current++,
-        text,
-        checked: false,
-      };
-      setTodos(todos.concat(todo));
+      if (text === "") {
+        openModal();
+      } else {
+        const todo = {
+          id: nextID.current++,
+          text,
+          checked: false,
+        };
+        setTodos(todos.concat(todo));
+      }
     },
     [todos]
   );
@@ -68,15 +83,21 @@ const App = () => {
   );
 
   return (
-    <TodoListTemplate>
-      <TodoAdd onAdd={onAdd} />
-      <TodoList
-        todos={todos}
-        onRemove={onRemove}
-        onCheck={onCheck}
-        onImportent={onImportent}
-      />
-    </TodoListTemplate>
+    <Fragment>
+      <Modal open={modalOpen} close={closeModal} header="경고">
+        추가하실 내용을 입력하세요.
+      </Modal>
+
+      <TodoListTemplate>
+        <TodoAdd onAdd={onAdd} />
+        <TodoList
+          todos={todos}
+          onRemove={onRemove}
+          onCheck={onCheck}
+          onImportent={onImportent}
+        />
+      </TodoListTemplate>
+    </Fragment>
   );
 };
 export default App;
