@@ -14,7 +14,6 @@
         justify-content: space-between;
         align-items: center;
         height: 4rem; 
-        background-color: aqua;
 
         .data_area{
             display: flex;
@@ -47,7 +46,7 @@
         }
 
         .title {
-            color : black;
+            color : aqua;
             font: italic 600 35px "Roboto condensed";
             margin-right: 10px;
             letter-spacing: -0.5px;
